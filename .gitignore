@@ -7,7 +7,6 @@
 /ext/native/*.o
 /ext/native/*.so
 /ext/native/Makefile
-lib/*.so
 .*.swp
 tags
 *.gem
