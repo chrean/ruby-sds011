@@ -19,7 +19,7 @@ class SDS011
     'tail'        # 0xAB
   ];
 
-  # Commands
+  # Command packet format
   @@query = {
     head:   '0xAA',
     cmd_id: '0xC0',
@@ -50,13 +50,7 @@ class SDS011
   end
 
   def bytes_to_int(low_byte, high_byte)
-    puts "Hi byte: #{high_byte.to_i}, Low byte: #{low_byte.to_i}"
     ((high_byte.to_i << 8) + low_byte.to_i) /10
-  end
-  
-  def calculate_checksum
-    sum = 0xff + 0xff
-    checksum = sum & 0xff
   end
 
   def send_command(cmd_hash)
