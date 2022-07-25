@@ -1,4 +1,3 @@
-#!/usr/bin/ruby
 require "rubygems"
 require "serialport"
 require "digest"
