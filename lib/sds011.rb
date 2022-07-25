@@ -77,6 +77,7 @@ class SDS011
 
     sp.close
     {
+      dev_id: bytes_to_int(reading_packet['id_low'],reading_packet['id_high']),
       pm25: bytes_to_int(reading_packet['pm25_low'],reading_packet['pm25_high']),
       pm10: bytes_to_int(reading_packet['pm10_low'],reading_packet['pm10_high'])
     }
