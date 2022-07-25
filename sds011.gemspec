@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "sds011"
-  s.version     = "0.0.2"
+  s.version     = "0.0.3"
   s.summary     = "SDS011 gem"
   s.description = "A simple gem to interact with SDS011 sensors via serial/USB"
   s.authors     = ["Gabriel Sambarino"]
