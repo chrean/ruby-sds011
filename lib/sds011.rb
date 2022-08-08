@@ -4,6 +4,9 @@ require "digest"
 require "pp"
 
 class SDS011
+  attr_accessor :device
+  attr_accessor :baud
+
   # SDS emits this packet at 1Hz frequency
   @@reading = [
     'header',     # 0xAA
@@ -40,6 +43,11 @@ class SDS011
     tail: '0xAB'
   };
 
+  def initialize(dev = '', baud = 9600)
+    @device = dev
+    @baud = baud
+  end
+
   def reading
     @@reading
   end
@@ -53,7 +61,7 @@ class SDS011
   end
 
   def send_command(cmd_hash)
-    sp = SerialPort.new("/dev/ttyUSB0", "9600".to_i)
+    sp = SerialPort.new(@device, @baud, 8, 1, SerialPort::NONE)
     sp.read_timeout = 100
     sp.flush()
     puts cmd_hash[:data14].to_s
@@ -62,7 +70,7 @@ class SDS011
 
   def reading()
     # Baud, databits, stopbits, parity
-    sp = SerialPort.new("/dev/ttyUSB0", 9600, 8, 1, SerialPort::NONE)
+    sp = SerialPort.new(@device, @baud, 8, 1, SerialPort::NONE)
     sp.read_timeout = 100
     sp.flush()
     sds_bytes=0
